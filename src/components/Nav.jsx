@@ -1,9 +1,11 @@
+import instagramLogo from '../assets/instagram_logo.png'
 const Nav = ()=>{
     return {
         <nav>
-          <button>
-          <img src={''} alt="logo"></img>
+          <button className='logo'>
+          <img src={instagramLogo} alt="logo"></img>
           </button>
         </nav>
     }
 }
+export default Nav
