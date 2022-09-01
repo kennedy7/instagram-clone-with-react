@@ -5,6 +5,7 @@ const Nav = ()=>{
           <button className='logo'>
           <img src={instagramLogo} alt="logo"></img>
           </button>
+          <input type="text" className="search" placeholder='search'/>
         </nav>
     }
 }
