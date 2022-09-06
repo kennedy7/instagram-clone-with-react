@@ -1,6 +1,5 @@
 import './App.css';
-import Nav from './components/Nav';
-import Bio from './components/Bio';
+import {Nav, Bio } from './components';
 
 const App =()=> {
   return (
