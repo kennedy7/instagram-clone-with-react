@@ -3,10 +3,12 @@ import {Nav, Bio } from './components';
 
 const App =()=> {
   return (
-    <div className="App">
-      <Nav/>
+    <>
+    <Nav/>
+    <div className="container">
       <Bio/>
     </div>
+    </>
   );
 }
 
