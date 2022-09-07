@@ -1,12 +1,14 @@
 import './App.css';
-import {Nav, Bio } from './components';
+import {Nav, Bio, Gallery } from './components';
+import React from 'react';
 
 const App =()=> {
   return (
     <>
     <Nav/>
     <div className="container">
-      <Bio/>
+      <Bio />
+      <Gallery />
     </div>
     </>
   );
