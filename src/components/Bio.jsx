@@ -1,13 +1,13 @@
 import { useState } from 'react'
 import profileIcon from '../assets/profileIcon.svg'
 const Bio = ()=>{
-    const [userDetails, setUserDetails] = useState({
+const [userDetails, setUserDetails] = useState({
         name: 'Kennedy Hillary',
         about: 'your fav node backend developer',
        })
 
-    const [editFormIsOpen, setEditFormIsOpen] = useState(false)
-    const updateUserDetails = (e)=>{
+const [editFormIsOpen, setEditFormIsOpen] = useState(false)
+const updateUserDetails = (e)=>{
         e.preventDefault()
         setUserDetails({
             name: e.target.nameOfUser.value,
@@ -16,7 +16,7 @@ const Bio = ()=>{
        setEditFormIsOpen(false)
     }
 
-    const handleSubmit = (e)=>{
+const handleSubmit = (e)=>{
         e.preventDefault()
         updateUserDetails(e)
     }
@@ -30,7 +30,7 @@ const editform =(
         <button type='submit' className='save-button' >Save</button>
     </form>
 )
-    const editButton = <button onClick={()=>setEditFormIsOpen(true)}>Edit</button>
+const editButton = <button onClick={()=>setEditFormIsOpen(true)}>Edit</button>
 
     return(
         <section className="bio">
