@@ -1,3 +1,8 @@
+import alex from '../assets/alex.jpg'
+import bondocks from '../assets/bondock.jpg'
+import smoke from '../assets/smoke.jpg'
+import nude from '../assets/nude.jpg'
+import space from '../assets/space.jpg'
 const Gallery =()=>{
     return(
         <>
