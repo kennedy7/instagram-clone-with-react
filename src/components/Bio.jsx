@@ -15,12 +15,10 @@ const updateUserDetails = (e)=>{
        })
        setEditFormIsOpen(false)
     }
-
 const handleSubmit = (e)=>{
         e.preventDefault()
         updateUserDetails(e)
     }
-
 const editform =(
     <form className='edit-bio-form' action="" onSubmit={handleSubmit}>
         <input type="text"  id='' name='nameOfUser' placeholder='your name'/>
@@ -34,10 +32,13 @@ const editButton = <button onClick={()=>setEditFormIsOpen(true)}>Edit</button>
 
     return(
         <section className="bio">
-            <input type="file" accept='images/*' name="photo" id='profilePhotoInpput' />
-            <div className="profile-photo" role="button" title="Click the edit button">
-            <img src={profileIcon} alt="profile" />
-            </div>
+            <input type="file" accept='image/*' name="photo" id='profilePhotoInput' />
+            <label htmlFor="profilePhotoInput">
+                <div className="profile-photo" role="button" title="Click to edit photo">
+                    <img src={profileIcon} alt="profile" />
+               </div>
+            </label>
+
             <div className="profile-info">
                 <p className='name'>{userDetails.name}</p>
                 <p className='about'>{userDetails.about}</p>
