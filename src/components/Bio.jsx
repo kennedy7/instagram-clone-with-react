@@ -34,6 +34,7 @@ const editform =(
 
     return(
         <section className="bio">
+            <input type="file" accept='images/*' name="photo" id='profilePhotoInpput' />
             <div className="profile-photo" role="button" title="Click the edit button">
             <img src={profileIcon} alt="profile" />
             </div>
