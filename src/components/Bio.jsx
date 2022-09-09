@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import getPhotoUrl from 'get-photo-url'
 import profileIcon from '../assets/profileIcon.svg'
 const Bio = ()=>{
 const [userDetails, setUserDetails] = useState({
@@ -7,6 +8,8 @@ const [userDetails, setUserDetails] = useState({
        })
 
 const [editFormIsOpen, setEditFormIsOpen] = useState(false)
+const [profilePhoto, setProfilePhoto] = useState(profileIcon)
+
 const updateUserDetails = (e)=>{
         e.preventDefault()
         setUserDetails({
@@ -29,13 +32,16 @@ const editform =(
     </form>
 )
 const editButton = <button onClick={()=>setEditFormIsOpen(true)}>Edit</button>
+const updateProfilePhoto = ()=>{
+    setProfilePhoto('selected photo as value')
 
+}
     return(
         <section className="bio">
             <input type="file" accept='image/*' name="photo" id='profilePhotoInput' />
             <label htmlFor="profilePhotoInput">
                 <div className="profile-photo" role="button" title="Click to edit photo">
-                    <img src={profileIcon} alt="profile" />
+                    <img src={profilePhoto} alt="profile" />
                </div>
             </label>
 
