@@ -18,6 +18,12 @@ const updateUserDetails = (e)=>{
        })
        setEditFormIsOpen(false)
     }
+const updateProfilePhoto = async ()=>{
+    const newProfilePhoto = await getPhotoUrl('#profilePhotoInput')
+        setProfilePhoto(newProfilePhoto)
+    
+    }
+
 const handleSubmit = (e)=>{
         e.preventDefault()
         updateUserDetails(e)
@@ -32,14 +38,11 @@ const editform =(
     </form>
 )
 const editButton = <button onClick={()=>setEditFormIsOpen(true)}>Edit</button>
-const updateProfilePhoto = ()=>{
-    setProfilePhoto('selected photo as value')
 
-}
     return(
         <section className="bio">
             <input type="file" accept='image/*' name="photo" id='profilePhotoInput' />
-            <label htmlFor="profilePhotoInput">
+            <label htmlFor="profilePhotoInput" onClick={updateProfilePhoto}>
                 <div className="profile-photo" role="button" title="Click to edit photo">
                     <img src={profilePhoto} alt="profile" />
                </div>
