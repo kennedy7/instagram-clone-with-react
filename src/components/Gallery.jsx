@@ -1,37 +1,32 @@
-import alex from '../assets/alex.jpg'
-import bondocks from '../assets/bondock.jpg'
-import smoke from '../assets/smoke.jpg'
-import nude from '../assets/nude.jpg'
-import space from '../assets/space.jpg'
+import getPhotoUrl from 'get-photo-url'
+import { useState } from 'react'
 const Gallery =()=>{
+
+const [allPhotos, setAllPhotos] = useState([])
+    
+const addPhoto = async ()=>{
+    const newPhoto = {
+        id: Date.now(),
+        url: await getPhotoUrl('#addPhotoInput')
+    }
+    setAllPhotos([newPhoto, ...allPhotos])
+
+}
     return(
         <>
         <input type="file" name="photo" id="addPhotoInput" />
-        <label htmlFor="addPhotoInput">
+        <label htmlFor="addPhotoInput" onClick={addPhoto}>
             <i className="add-photo-button fas fa-plus-square"></i>
         </label>
 
         <section className='gallery'>
-            <div className="item">
-                <img src={alex} className="item-image" alt="" />
-                <button className='delete-button'>Delete</button>
-            </div>
-            <div className="item">
-                <img src={bondocks} className="item-image" alt="" />
-                <button className='delete-button'>Delete</button>
-            </div>
-            <div className="item">
-                <img src={smoke} className="item-image" alt="" />
-                <button className='delete-button'>Delete</button>
-            </div>
-            <div className="item">
-                <img src={nude} className="item-image" alt="" />
-                <button className='delete-button'>Delete</button>
-            </div>
-            <div className="item">
-                <img src={space} className="item-image" alt="" />
-                <button className='delete-button'>Delete</button>
-            </div>
+            {allPhotos.map((photo)=>(
+                 <div className="item" key={photo.id}>
+                 <img src={photo.url} className="item-image" alt="" />
+                 <button className='delete-button'>Delete</button>
+             </div>
+            ))}
+      
         </section>
         </>
     )
