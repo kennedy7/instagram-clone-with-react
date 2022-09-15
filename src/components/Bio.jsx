@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import getPhotoUrl from 'get-photo-url'
 import profileIcon from '../assets/profileIcon.svg'
+import { db } from '../dexie'
 const Bio = ()=>{
 const [userDetails, setUserDetails] = useState({
         name: 'Kennedy Hillary',
@@ -10,12 +11,15 @@ const [userDetails, setUserDetails] = useState({
 const [editFormIsOpen, setEditFormIsOpen] = useState(false)
 const [profilePhoto, setProfilePhoto] = useState(profileIcon)
 
-const updateUserDetails = (e)=>{
+const updateUserDetails = async (e)=>{
         e.preventDefault()
-        setUserDetails({
-            name: e.target.nameOfUser.value,
-            about: e.target.aboutUser.value
-       })
+const objectData = {
+    name: e.target.nameOfUser.value,
+    about: e.target.aboutUser.value
+}
+ setUserDetails(objectData)
+       //update bio to dexie objexct store
+    await   db.bio.put(objectData, 'info')
        setEditFormIsOpen(false)
     }
 const updateProfilePhoto = async ()=>{
