@@ -21,19 +21,18 @@ useEffect(()=>{
 
 const updateUserDetails = async (e)=>{
         e.preventDefault()
-      const objectData = {
-        name: e.target.nameOfUser.value,
-        about: e.target.aboutUser.value
+const objectData = {
+     name: e.target.nameOfUser.value,
+     about: e.target.aboutUser.value
 }
       setUserDetails(objectData)
-       //update bio to dexie objexct store
       await db.bio.put(objectData, 'info')
        setEditFormIsOpen(false)
     }
+
 const updateProfilePhoto = async ()=>{
     const newProfilePhoto = await getPhotoUrl('#profilePhotoInput')
         setProfilePhoto(newProfilePhoto)
-
     }
 
 const handleSubmit = (e)=>{
