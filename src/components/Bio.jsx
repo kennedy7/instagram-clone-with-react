@@ -67,7 +67,6 @@ const editButton = <button onClick={()=>setEditFormIsOpen(true)}>Edit</button>
             </div>
         </section>
     )
-
 }
 
 export default Bio
