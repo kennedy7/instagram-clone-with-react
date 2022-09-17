@@ -13,8 +13,10 @@ const [profilePhoto, setProfilePhoto] = useState(profileIcon)
 
 useEffect(()=>{
    const setDataFromDb = async ()=>{
-   const userDetailsFromDb = await db.bio.get('info')
+   const userDetailsFromDb = await db.bio.get('info');
+   const profilePhotoFromDb = await db.bio.get('ProfilePhoto');
    userDetailsFromDb && setUserDetails(userDetailsFromDb)
+   profilePhotoFromDb && setProfilePhoto(profilePhotoFromDb)
     }
     setDataFromDb()
 })
@@ -33,6 +35,7 @@ const objectData = {
 const updateProfilePhoto = async ()=>{
     const newProfilePhoto = await getPhotoUrl('#profilePhotoInput')
         setProfilePhoto(newProfilePhoto)
+        await db.bio.put(newProfilePhoto, 'ProfilePhoto')
     }
 
 const handleSubmit = (e)=>{
