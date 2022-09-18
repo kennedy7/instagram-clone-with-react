@@ -3,12 +3,15 @@ import { useLiveQuery } from 'dexie-react-hooks'
 import {db} from  '../dexie'
 const Gallery =()=>{
 
-const [allPhotos] = useLiveQuery(()=>db.gallery.toArray(), [])
+const allPhotos = useLiveQuery(()=>db.gallery.toArray(), [])
 
 const addPhoto = async ()=>{
-    db.gallery.add(
+    db.gallery.add({
         url: await getPhotoUrl('#addPhotoInput')
-    )
+    })
+}
+const removePhoto = async(id)=>{
+db.gallery.delete(id)
 }
     return(
         <>
@@ -18,10 +21,10 @@ const addPhoto = async ()=>{
         </label>
 
         <section className='gallery'>
-            {allPhotos.map((photo)=>(
+            {allPhotos?.map((photo)=>(
                  <div className="item" key={photo.id}>
                  <img src={photo.url} className="item-image" alt="" />
-                 <button className='delete-button'>Delete</button>
+                 <button className='delete-button' onClick={()=>removePhoto(photo.id)}>Delete</button>
              </div>
             ))}
       
