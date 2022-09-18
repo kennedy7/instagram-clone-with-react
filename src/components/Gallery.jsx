@@ -1,25 +1,14 @@
 import getPhotoUrl from 'get-photo-url'
-import { useState, useEffect } from 'react'
+import { useLiveQuery } from 'dexie-react-hooks'
 import {db} from  '../dexie'
 const Gallery =()=>{
 
-const [allPhotos, setAllPhotos] = useState([]);
-useEffect(()=>{
-    const setPhotosFromDb = async ()=>{
-    const PhotosFromDb = await db.bio.get('images');
-    PhotosFromDb && setAllPhotos(PhotosFromDb)
-     }
-     setPhotosFromDb()
- })
- 
+const [allPhotos] = useLiveQuery(()=>db.gallery.toArray(), [])
 
 const addPhoto = async ()=>{
-    const newPhoto = {
-        id: Date.now(),
+    db.gallery.add(
         url: await getPhotoUrl('#addPhotoInput')
-    }
-    setAllPhotos([newPhoto, ...allPhotos])
-    await db.gallery.put(newPhoto, 'images')
+    )
 }
     return(
         <>

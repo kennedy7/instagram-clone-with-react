@@ -45,8 +45,8 @@ const handleSubmit = (e)=>{
     }
 const editform =(
     <form className='edit-bio-form' action="" onSubmit={handleSubmit}>
-        <input type="text"  id='' name='nameOfUser' placeholder='your name'/>
-        <input type="text" id='' name='aboutUser' placeholder='About you'/>
+        <input type="text"  id='' name='nameOfUser' defaultValue={userDetails?.name} placeholder='your name'/>
+        <input type="text" id='' name='aboutUser' defaultValue={userDetails?.about} placeholder='About you'/>
         <br />
         <button type='button' className='cancel-button' onClick={()=>setEditFormIsOpen(false)}>Cancel</button>
         <button type='submit' className='save-button' >Save</button>
