@@ -1,16 +1,25 @@
 import getPhotoUrl from 'get-photo-url'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import {db} from  '../dexie'
 const Gallery =()=>{
 
-const [allPhotos, setAllPhotos] = useState([])
-    
+const [allPhotos, setAllPhotos] = useState([]);
+useEffect(()=>{
+    const setPhotosFromDb = async ()=>{
+    const PhotosFromDb = await db.bio.get('images');
+    PhotosFromDb && setAllPhotos(PhotosFromDb)
+     }
+     setPhotosFromDb()
+ })
+ 
+
 const addPhoto = async ()=>{
     const newPhoto = {
         id: Date.now(),
         url: await getPhotoUrl('#addPhotoInput')
     }
     setAllPhotos([newPhoto, ...allPhotos])
-
+    await db.gallery.put(newPhoto, 'images')
 }
     return(
         <>
