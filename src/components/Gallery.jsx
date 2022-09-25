@@ -21,7 +21,7 @@ db.gallery.delete(id)
         </label>
 
         <section className='gallery'>
-            {!allPhotos && <p>Loading Gallery Content...</p>}
+            {!allPhotos && <p>Loading Gallery Content....</p>}
             {allPhotos?.map((photo)=>(
                  <div className="item" key={photo.id}>
                  <img src={photo.url} className="item-image" alt="" />
